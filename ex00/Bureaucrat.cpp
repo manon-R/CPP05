@@ -36,7 +36,7 @@ const string Bureaucrat::getName() const{
 }
 
 void Bureaucrat::increment(){
-	if ( grade == 1)
+	if (grade == 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 	{
@@ -57,5 +57,5 @@ void Bureaucrat::decrement(){
 
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& other){
-	return out << CYAN << other.getName() << ", bureaucrat grade " << other.getGrade() << endl;
+	return out << YELLOW << other.getName() << ", bureaucrat grade " << other.getGrade() << RESET << endl;
 }
