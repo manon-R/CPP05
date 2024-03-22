@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 using std::string;
 using std::cout;
@@ -52,6 +53,12 @@ void Bureaucrat::decrement(){
 	{
 		cout << RED << getName() << "'s grade -1" << RESET << endl;
 		grade++;
+	}
+}
+
+void Bureaucrat::signForm(Form& f){
+	try{
+		f.beSigned(*this);
 	}
 }
 

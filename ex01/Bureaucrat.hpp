@@ -17,8 +17,9 @@
 
 using std::string;
 
-class Bureaucrat{
+class Form;
 
+class Bureaucrat{
 
 public:
 
@@ -48,6 +49,7 @@ public:
 
 	void increment();
 	void decrement();
+	void signForm(Form& f);
 
 private:
 
