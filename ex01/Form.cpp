@@ -3,9 +3,9 @@
 using std::cout;
 using std::endl;
 
-Form::Form(): signGrade(1), execGrade(1), status(false){}
+Form::Form(): status(false), signGrade(1), execGrade(1){}
 
-Form::Form(const string n, unsigned int s, unsigned int e): name(n), signGrade(s), execGrade(e), status(false) {
+Form::Form(const string n, unsigned int s, unsigned int e): name(n), status(false), signGrade(s), execGrade(e){
 	if (s > 150)
 		throw GradeTooLowException();
 	else if (s < 1)
@@ -16,11 +16,14 @@ Form::Form(const string n, unsigned int s, unsigned int e): name(n), signGrade(s
 		throw GradeTooHighException();
 }
 
-Form::Form(const Form& other): name(other.name), signGrade(other.signGrade), execGrade(other.execGrade), status(other.status){
+Form::Form(const Form& other): name(other.name), status(other.status), signGrade(other.signGrade), execGrade(other.execGrade){
 }
 
 Form &Form::operator= (const Form& other){
 	throw ConstCantReassignException();
+	if (this == &other)
+		return *this;
+	return *this;
 }
 
 Form::~Form(){}
@@ -33,11 +36,11 @@ bool Form::getStatus() const{
 	return status;
 }
 
-const unsigned int Form::getSignGrade() const{
+unsigned int Form::getSignGrade() const{
 	return signGrade;
 }
 
-const unsigned int Form::getExecGrade() const{
+unsigned int Form::getExecGrade() const{
 	return execGrade;
 }
 
@@ -45,33 +48,40 @@ const unsigned int Form::getExecGrade() const{
 void Form::beSigned(const Bureaucrat& b){
 	if (status)
 	{
-		cout << RED <<  "Form " << name << " is already signed" << RESET << endl;
+		cout << b.getName() << " couldn't sign " << name << " because : " << RED <<  "Form " << name << " is already signed" << RESET << endl;
 		return ;
 	}
 	else if (b.getGrade() > signGrade)
-		throw Form::GradeTooHighException();
+	{
+		cout << b.getName() << " couldn't sign " << name << " because : " << endl;
+		throw Form::GradeTooLowException();
+	}
 	else
+	{
 		status = true;
+		cout << GREEN << b.getName() << " signed "  << name  << RESET << endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& other){
-	cout << MAGENTA << "**** Form " << other.getName() << " ****"<< RESET << endl;
-	cout << "Status => ";
+	out << MAGENTA_B << "**** Form " << other.getName() << " ****"<< RESET << endl;
+	out << "Status => ";
 	if (other.getStatus())
-		cout << MAGENTA << "SIGNED" << RESET << endl;
+		out << MAGENTA_B << "SIGNED" << RESET << endl;
 	else
-		cout << MAGENTA <<"UNSIGNED" << RESET << endl;
-	cout << "MIN grade required to sign => " << MAGENTA << other.getSignGrade() << RESET << endl;
-	cout << "MIN grade required to execute => " << MAGENTA << other.getExecGrade() << RESET << endl;
+		out << MAGENTA_B <<"UNSIGNED" << RESET << endl;
+	out << "MIN grade required to sign => " << MAGENTA_B << other.getSignGrade() << RESET << endl;
+	out << "MIN grade required to execute => " << MAGENTA_B << other.getExecGrade() << RESET << endl;
+	return out;
 }
 
 
 const char *Form::GradeTooHighException::what() const throw(){
-		return ("***** !!!!! GRADE TOO HIGH for this form !!!!! *****");
+		return ("***** !!!!! GRADE TOO HIGH (FORM exception) !!!!! *****");
 }
 
 const char *Form::GradeTooLowException::what() const throw(){
-		return ("***** !!!!! GRADE TOO LOW for this form !!!!! *****");
+		return ("***** !!!!! GRADE TOO LOW (FORM exception) !!!!! *****");
 }
 
 const char *Form::ConstCantReassignException::what() const throw(){

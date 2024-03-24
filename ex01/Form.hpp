@@ -10,8 +10,7 @@ using std::string;
 # define RED     "\033[31m"
 # define GREEN   "\033[32m"
 # define YELLOW  "\033[1;33m"
-# define BLUE    "\033[34m"
-# define MAGENTA "\033[1;35m"
+# define MAGENTA_B "\033[1;35m"
 # define CYAN    "\033[36m"
 # define RED_BOLD  "\033[1;31m"
 
@@ -47,8 +46,8 @@ public:
 
 	string	getName() const;
 	bool	getStatus()const;
-	const unsigned int getSignGrade()const;
-	const unsigned int getExecGrade()const;
+	unsigned int getSignGrade()const;
+	unsigned int getExecGrade()const;
 
 	void beSigned(const Bureaucrat& b);
 

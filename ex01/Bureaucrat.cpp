@@ -57,9 +57,7 @@ void Bureaucrat::decrement(){
 }
 
 void Bureaucrat::signForm(Form& f){
-	try{
 		f.beSigned(*this);
-	}
 }
 
 
