@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <iostream>
 #include "Bureaucrat.hpp"
@@ -14,7 +14,7 @@ using std::string;
 # define CYAN    "\033[36m"
 # define RED_BOLD  "\033[1;31m"
 
-class Form{
+class AForm{
 
 public:
 
@@ -39,10 +39,17 @@ public:
 		virtual const char *what() const throw();
 	};
 
-	Form();
-	Form(const string name, unsigned int s, unsigned int e);
-	Form(const Form& other);
-	~Form();
+	class NotSignedException : public std::exception{
+
+	public:
+
+		virtual const char *what() const throw();
+	};
+
+	AForm();
+	AForm(const string name, unsigned int s, unsigned int e);
+	AForm(const AForm& other);
+	virtual ~AForm();
 
 	string	getName() const;
 	bool	getStatus()const;
@@ -50,6 +57,10 @@ public:
 	unsigned int getExecGrade()const;
 
 	void beSigned(const Bureaucrat& b);
+	virtual void execute(Bureaucrat const & executor) const = 0;
+
+protected:
+	void checkExec(Bureaucrat const & b) const;
 
 private:
 	const string name;
@@ -57,10 +68,10 @@ private:
 	const unsigned int signGrade;
 	const unsigned int execGrade;
 
-	Form& operator=(const Form& other);
+	AForm& operator=(const AForm& other);
 };
 
-std::ostream& operator<<(std::ostream& out, const Form& other);
+std::ostream& operator<<(std::ostream& out, const AForm& other);
 
 
 #endif

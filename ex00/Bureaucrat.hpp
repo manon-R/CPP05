@@ -22,19 +22,19 @@ class Bureaucrat{
 
 public:
 
-class GradeTooHighException : public std::exception{
+	class GradeTooHighException : public std::exception{
 
-public:
+	public:
 
-	virtual const char *what() const throw();
-};
+		virtual const char *what() const throw();
+	};
 
-class GradeTooLowException : public std::exception{
+	class GradeTooLowException : public std::exception{
 
-public:
+	public:
 
-	virtual const char *what() const throw();
-};
+		virtual const char *what() const throw();
+	};
 
 	Bureaucrat();
 	Bureaucrat(const string& n, int g);
