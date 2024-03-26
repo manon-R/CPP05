@@ -88,11 +88,11 @@ std::ostream& operator<<(std::ostream& out, const AForm& other){
 
 
 const char *AForm::GradeTooHighException::what() const throw(){
-		return ("***** !!!!! GRADE TOO HIGH (AForm exception) !!!!! *****");
+		return ("***** !!!!! GRADE TOO HIGH !!!!! *****");
 }
 
 const char *AForm::GradeTooLowException::what() const throw(){
-		return ("***** !!!!! GRADE TOO LOW (AForm exception) !!!!! *****");
+		return ("***** !!!!! GRADE TOO LOW !!!!! *****");
 }
 
 const char *AForm::ConstCantReassignException::what() const throw(){

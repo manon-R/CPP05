@@ -3,10 +3,10 @@
 using std::cout;
 using std::endl;
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy Request", 72, 45), operationStatus(false){
+RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy Request", 72, 45){
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const string& t):AForm("Robotomy Request", 72, 45), target(t), operationStatus(false){
+RobotomyRequestForm::RobotomyRequestForm(const string& t):AForm("Robotomy Request", 72, 45), target(t){
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other){
@@ -17,7 +17,6 @@ RobotomyRequestForm::~RobotomyRequestForm(){}
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other){
 	target = other.target;
-	operationStatus = other.operationStatus;
 	return *this;
 }
 
@@ -25,14 +24,12 @@ string RobotomyRequestForm::getTarget() const{
 	return target;
 }
 
-void RobotomyRequestForm::changeOperationStatus(){
-	operationStatus = (operationStatus) ? false : true;
-}
-
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 	checkExec(executor);
-	if (operationStatus)
-		cout << CYAN << target << " has been successfully robotomized" << RESET << endl;
+	int random_number = std::rand();
+	bool status = (random_number % 2 == 0) ? true : false; 
+	if (status)
+		cout << YELLOW << target << " has been successfully robotomized" << RESET << endl;
 	else
 		cout << BLUE << target << "'s robotomy failed ..." << RESET << endl;
 }

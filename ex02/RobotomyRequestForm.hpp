@@ -2,6 +2,7 @@
 # define ROBOTOMY_REQUEST_FORM_HPP
 
 #include <iostream>
+#include <cstdlib>
 #include "AForm.hpp"
 
 using std::string;
@@ -18,13 +19,11 @@ public:
 	virtual ~RobotomyRequestForm();
 
 	virtual void execute(Bureaucrat const & executor) const;
-	void changeOperationStatus();
 	string getTarget() const;
 
 private:
 
 	string target;
-	bool operationStatus;
 };
 
 #endif

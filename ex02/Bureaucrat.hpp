@@ -9,7 +9,7 @@
 # define RED     "\033[31m"
 # define GREEN   "\033[32m"
 # define YELLOW  "\033[1;33m"
-# define BLUE    "\033[34m"
+# define BLUE    "\033[1;34m"
 # define MAGENTA "\033[35m"
 # define CYAN    "\033[36m"
 # define RED_BOLD  "\033[1;31m"
@@ -50,6 +50,7 @@ public:
 	void increment();
 	void decrement();
 	void signForm(AForm& f);
+	void executeForm(AForm const & form);
 
 private:
 

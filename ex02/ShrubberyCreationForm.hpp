@@ -2,6 +2,7 @@
 # define SHRUBBERY_CREATION_FORM_HPP
 
 #include <iostream>
+#include <fstream>
 #include "AForm.hpp"
 
 using std::string;
