@@ -12,6 +12,8 @@ int main(void){
 
 	AForm* test1;
 	test1 = someRandomIntern.makeForm("test", "Bender");
+	if (test1)
+		cout << endl;
 	cout << endl;
 
 	AForm* test2;

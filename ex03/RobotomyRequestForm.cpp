@@ -9,7 +9,7 @@ RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy Request", 72, 45){
 RobotomyRequestForm::RobotomyRequestForm(const string& t):AForm("Robotomy Request", 72, 45), target(t){
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other){
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other): AForm("Robotomy Request", 72, 45), target(other.target){
 	*this = other;
 }
 

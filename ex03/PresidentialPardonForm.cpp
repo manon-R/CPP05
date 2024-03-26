@@ -9,7 +9,7 @@ PresidentialPardonForm::PresidentialPardonForm(): AForm("Presidential Pardon", 2
 PresidentialPardonForm::PresidentialPardonForm(const string& t):AForm("Presidential Pardon", 25, 5), target(t){
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other){
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other): AForm("Presidential Pardon", 25, 5), target(other.target){
 	*this = other;
 }
 

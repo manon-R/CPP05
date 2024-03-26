@@ -9,7 +9,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery Creation", 145,
 
 ShrubberyCreationForm::ShrubberyCreationForm(const string & t): AForm("Shrubbery Creation", 145, 137), target(t){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other){
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other): AForm("Shrubbery Creation", 145, 137), target(other.target){
 	*this = other;
 }
 
