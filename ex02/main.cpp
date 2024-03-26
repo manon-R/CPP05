@@ -66,4 +66,7 @@ cout << CYAN << "***** Finally B1 execute f3 *****" << RESET << endl;
 b1.executeForm(*f3);
 cout << endl;
 
+delete f1;
+delete f2;
+delete f3;
 }
