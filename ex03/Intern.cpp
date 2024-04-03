@@ -40,19 +40,16 @@ AForm* Intern::makeForm(const string & name, const string & target){
 		switch(index){
 			case 0:
 			{
-				// AForm *form = new ShrubberyCreationForm(target);
 				cout << "Intern creates " << name << endl;
 				return new ShrubberyCreationForm(target);
 			}
 			case 1:
 			{
-				// AForm *form = new RobotomyRequestForm(target);
 				cout << "Intern creates " << name << endl;
 				return new RobotomyRequestForm(target);
 			}
 			case 2:
 			{
-				// AForm *form = new PresidentialPardonForm(target);
 				cout << "Intern creates " << name << endl;
 				return new PresidentialPardonForm(target);
 			}
